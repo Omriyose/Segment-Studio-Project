@@ -27,6 +27,6 @@ If Ollama isn't running, the app shows an error message instead of generating na
 - Rows removed as outliers stay in the exported CSV, labelled "outlier".
 - Streamlit sliders look reversed, although they still work, it could confuse users. I couldn't find a fix for that except ditching the sliders for a boring replacement so I decided to keep it anyway.
 
-![upload](screenshot1.png)
-![score and plot](screenshot2.png)
-![clusters, names and export](screenshot3.png)
+![upload](Screenshots/screenshot1.png)
+![score and plot](Screenshots/screenshot2.png)
+![clusters, names and export](Screenshots/screenshot3.png)
