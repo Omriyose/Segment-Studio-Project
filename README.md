@@ -25,7 +25,7 @@ If Ollama isn't running, the app shows an error message instead of generating na
 - Llama 3.2 is a small local model, so the names generated could become inaccurate with more clusters.
 - The two scores can suggest different values of K, and the pick depends on the range scanned. Treat the suggestion as a starting point and check the plot.
 - Rows removed as outliers stay in the exported CSV, labelled "outlier".
-- Streamlit sliders look reversed, although they still work, it could confuse users. I couldn't find a fix for that except ditching the sliders for a boring replacement so I decided to keep it anyway.
+- Streamlit sliders look reversed, although they still work, it could confuse users. I couldn't find a fix for that except ditching the sliders for a boring replacement so I decided to keep it anyway. (Possibly a limitation of the engine's incompatibility with Hebrew?)
 
 ## Screenshots
 ![upload](Screenshots/screenshot1.png)
