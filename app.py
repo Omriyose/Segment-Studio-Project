@@ -200,14 +200,14 @@ if uploaded_file is not None:
                     "Name": names,
                     "Description": descriptions,
                     }).set_index("Cluster ID")
-                    st.subheader("Clusters defined by LLM (LLaMa)")
-                    st.session_state["named_table"] = named_table
                 except (ConnectionError, ollama.ResponseError):
                     failed = True
             if failed:
                 st.error("Couldn't reach the model. Make sure Ollama is running and `llama3.2` is pulled.")
                 st.stop()
     if "named_table" in st.session_state:
+        st.subheader("Clusters defined by LLM (LLaMa)")
+        st.session_state["named_table"] = named_table
         st.dataframe(st.session_state["named_table"])
         names_by_id = st.session_state["named_table"]["Name"].to_dict()
         export_df = df.copy()
