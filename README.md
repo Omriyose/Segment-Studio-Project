@@ -8,18 +8,20 @@ Upload a CSV, find hidden groups with K-Means and let a local LLM name each grou
 3. Pick K automatically, by highest silhouette or by asking the LLM to read the WCSS table
 4. Create clusters + optional outlier removing
 5. Name and describe each cluster with a local LLM (Llama 3.2 via Ollama)
-6. Download the CSV with a 'cluster_name' column added
+6. Download the CSV with a `cluster_name` column added
 
 ## Run it
 1. Install Ollama from https://ollama.com/download
-2. `ollama pull llama3.2`
-3. `pip install -r requirements.txt`
-4. `streamlit run app.py`
+2. ```
+   ollama pull llama3.2
+   pip install -r requirements.txt
+   streamlit run app.py
+   ```
 
 If Ollama isn't running, the app shows an error message instead of generating names.
 
 ## Sample Data
-'make_sample_data.py' creates 'iris_no_label.csv', a copy of Iris measurements without the species column
+`make_sample_data.py` creates `iris_no_label.csv`, a copy of Iris measurements without the species column
 
 ## Known limitations
 - Llama 3.2 is a small local model, so the names generated could become inaccurate with more clusters.
