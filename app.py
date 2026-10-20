@@ -1,3 +1,5 @@
+"""Segment Studio: upload a CSV, group its rows with K-Means, and name each group with a local LLM."""
+
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -151,7 +153,7 @@ if uploaded_file is not None:
         st.dataframe(st.session_state["cluster_table"])
         st.caption(f"{int((~st.session_state['keep']).sum())} rows removed as outliers")
 
-    #Prepearing a DF and parameters for our LLM to read and describe ONLY after Create Clusters was used.
+    #Preparing a DF and parameters for our LLM to read and describe ONLY after Create Clusters was used.
     if "labels" in st.session_state:
         if st.button("Generate names with LLM"):
             df_to_llm = df[st.session_state["keep"]].copy()
@@ -200,6 +202,7 @@ if uploaded_file is not None:
                     "Name": names,
                     "Description": descriptions,
                     }).set_index("Cluster ID")
+                    st.session_state["named_table"] = named_table
                 except (ConnectionError, ollama.ResponseError):
                     failed = True
             if failed:
@@ -207,7 +210,6 @@ if uploaded_file is not None:
                 st.stop()
     if "named_table" in st.session_state:
         st.subheader("Clusters defined by LLM (LLaMa)")
-        st.session_state["named_table"] = named_table
         st.dataframe(st.session_state["named_table"])
         names_by_id = st.session_state["named_table"]["Name"].to_dict()
         export_df = df.copy()
